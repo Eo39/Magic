@@ -129,13 +129,13 @@ if page == "home":
             go("draw")
 
 elif page == "story":
-    from pages import story
+    from modules import story
     story.show()
 
 elif page == "quiz":
-    from pages import quiz
+    from modules import quiz
     quiz.show()
 
 elif page == "draw":
-    from pages import draw
+    from modules import draw
     draw.show()
