@@ -84,7 +84,7 @@ def show():
     chosen   = st.session_state.quiz_chosen
 
     question_text = f"Welches Bild zeigt den {correct['name']}? {correct['emoji']}"
-    st.markdown(f'<img src="{animal["url"]}" style="width:100%;border-radius:16px;margin-bottom:0.5rem">', unsafe_allow_html=True)
+    st.markdown(f'<div class="quiz-question">{question_text}</div>', unsafe_allow_html=True)
 
     if not answered and not st.session_state.get("quiz_question_read"):
         play_text(f"Welches Bild zeigt den {correct['name']}?")
