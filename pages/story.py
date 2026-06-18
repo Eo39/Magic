@@ -1,6 +1,6 @@
 import streamlit as st
-from utils.llm import generate
-from utils.tts import play_text, play_button
+from helpers.llm import generate
+from helpers.tts import play_text, play_button
 
 TOPICS = [
     {"emoji": "🏛️", "label": "Ägypten & Pyramiden",  "prompt": "Erzähle eine kurze, spannende Geschichte für Kinder über das alte Ägypten und die Pyramiden. Erkläre dabei einfach, warum die Pyramiden gebaut wurden."},
