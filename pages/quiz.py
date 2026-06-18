@@ -1,6 +1,6 @@
 import streamlit as st
 import random
-from utils.tts import play_text
+from helpers.tts import play_text
 
 ANIMALS = [
     {"name": "Elefant",  "emoji": "🐘", "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/African_Bush_Elephant.jpg/480px-African_Bush_Elephant.jpg"},
