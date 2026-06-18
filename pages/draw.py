@@ -1,5 +1,5 @@
 import streamlit as st
-from utils.tts import play_button
+from helpers.tts import play_button
 
 TUTORIALS = {
     "🐱 Katze": {
@@ -199,7 +199,7 @@ def show():
     steps = tut["steps"]
 
     if step == 0 and not st.session_state.get(f"draw_intro_{tut_name}"):
-        from utils.tts import play_text
+        from helpers.tts import play_text
         play_text(tut["intro"])
         st.session_state[f"draw_intro_{tut_name}"] = True
 
