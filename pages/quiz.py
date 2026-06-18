@@ -103,7 +103,8 @@ def show():
                 st.markdown(f'<img src="{animal["url"]}" class="{css_class}" style="width:100%;border-radius:16px">', unsafe_allow_html=True)
                 st.markdown(f'<p style="text-align:center;font-size:1.1rem;font-weight:700">{animal["emoji"]} {animal["name"]}</p>', unsafe_allow_html=True)
             else:
-                st.image(animal["url"], use_container_width=True)
+                # ← HIER die Änderung: HTML img statt st.image()
+                st.markdown(f'<img src="{animal["url"]}" style="width:100%;border-radius:16px;margin-bottom:0.5rem">', unsafe_allow_html=True)
                 if st.button(f"{animal['emoji']} Das ist es!", key=f"answer_{i}_{animal['name']}"):
                     st.session_state.quiz_answered = True
                     st.session_state.quiz_chosen   = animal["name"]
