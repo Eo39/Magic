@@ -3,20 +3,19 @@ import random
 from helpers.tts import play_text
 
 ANIMALS = [
-    {"name": "Elefant",  "emoji": "🐘", "url": "https://upload.wikimedia.org/wikipedia/commons/3/37/African_Bush_Elephant.jpg"},
-    {"name": "Löwe",     "emoji": "🦁", "url": "https://upload.wikimedia.org/wikipedia/commons/7/73/Lion_waiting_in_Namibia.jpg"},
-    {"name": "Pinguin",  "emoji": "🐧", "url": "https://upload.wikimedia.org/wikipedia/commons/6/69/Spheniscus_demersus_in_Boulders_Beach.jpg"},
-    {"name": "Giraffe",  "emoji": "🦒", "url": "https://upload.wikimedia.org/wikipedia/commons/9/9e/Giraffe_Mikumi_National_Park.jpg"},
-    {"name": "Zebra",    "emoji": "🦓", "url": "https://upload.wikimedia.org/wikipedia/commons/e/e3/Plains_Zebra_Equus_quagga.jpg"},
-    {"name": "Gorilla",  "emoji": "🦍", "url": "https://upload.wikimedia.org/wikipedia/commons/b/b4/Silverback_Gorilla.jpg"},
-    {"name": "Flamingo", "emoji": "🦩", "url": "https://upload.wikimedia.org/wikipedia/commons/5/58/Flamingos_Laguna_Colorada.jpg"},
-    {"name": "Krokodil", "emoji": "🐊", "url": "https://upload.wikimedia.org/wikipedia/commons/1/1f/Crocodylus_niloticus_nel_parco_nazionale_Kruger.jpg"},
-    {"name": "Nashorn",  "emoji": "🦏", "url": "https://upload.wikimedia.org/wikipedia/commons/0/06/White_Rhinoceros.jpg"},
-    {"name": "Koalabär", "emoji": "🐨", "url": "https://upload.wikimedia.org/wikipedia/commons/4/49/Koala_climbing_tree.jpg"},
-    {"name": "Panda",    "emoji": "🐼", "url": "https://upload.wikimedia.org/wikipedia/commons/0/0f/Grosser_Panda.JPG"},
-    {"name": "Kamel",    "emoji": "🐪", "url": "https://upload.wikimedia.org/wikipedia/commons/4/4a/Camelus_bactrianus_Bactrian_Camel.jpg"},
+    {"name": "Elefant",  "emoji": "🐘", "url": "https://images.unsplash.com/photo-1564760055775-d63b17a55c44?w=400"},
+    {"name": "Löwe",     "emoji": "🦁", "url": "https://images.unsplash.com/photo-1546182990-dffeafbe841d?w=400"},
+    {"name": "Pinguin",  "emoji": "🐧", "url": "https://images.unsplash.com/photo-1551986782-d0169b3f8fa7?w=400"},
+    {"name": "Giraffe",  "emoji": "🦒", "url": "https://images.unsplash.com/photo-1547721064-da6cfb341d50?w=400"},
+    {"name": "Zebra",    "emoji": "🦓", "url": "https://images.unsplash.com/photo-1529728329775-c90d27125b7b?w=400"},
+    {"name": "Gorilla",  "emoji": "🦍", "url": "https://images.unsplash.com/photo-1551382098-8e5f5b1b4a95?w=400"},
+    {"name": "Flamingo", "emoji": "🦩", "url": "https://images.unsplash.com/photo-1497206365907-f5e630693df0?w=400"},
+    {"name": "Krokodil", "emoji": "🐊", "url": "https://images.unsplash.com/photo-1504450874802-0ba2bcd9b5ae?w=400"},
+    {"name": "Nashorn",  "emoji": "🦏", "url": "https://images.unsplash.com/photo-1598439210625-5067c578f3f6?w=400"},
+    {"name": "Koalabär", "emoji": "🐨", "url": "https://images.unsplash.com/photo-1459262838948-3e2de6c1ec80?w=400"},
+    {"name": "Panda",    "emoji": "🐼", "url": "https://images.unsplash.com/photo-1564349683136-77e08dba1ef7?w=400"},
+    {"name": "Kamel",    "emoji": "🐪", "url": "https://images.unsplash.com/photo-1518467166778-b88f373ffec7?w=400"},
 ]
-
 MAX_LIVES = 5
 
 def _init_quiz():
