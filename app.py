@@ -20,7 +20,6 @@ html, body, [class*="css"] {
     min-height: 100vh;
 }
 
-/* Sterne-Animation im Hintergrund */
 .stApp::before {
     content: '⭐✨🌟💫⭐✨🌟💫⭐✨🌟💫⭐✨🌟💫⭐✨🌟💫';
     position: fixed;
@@ -36,26 +35,24 @@ html, body, [class*="css"] {
 
 #MainMenu, header, footer { visibility: hidden; }
 
-/* Alle Buttons groß und klickbar */
 div.stButton > button {
     font-family: 'Nunito', sans-serif;
     font-size: 1.4rem;
     font-weight: 900;
     border-radius: 20px;
     padding: 1rem 1.5rem;
-    border: none;
+    border: 2px solid rgba(255,255,255,0.6);
     cursor: pointer;
     transition: transform 0.15s, box-shadow 0.15s;
     width: 100%;
-    background: rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.35);
     color: white;
     backdrop-filter: blur(10px);
-    border: 2px solid rgba(255,255,255,0.3);
 }
 div.stButton > button:hover {
     transform: scale(1.06);
     box-shadow: 0 8px 25px rgba(0,0,0,0.3);
-    background: rgba(255,255,255,0.25);
+    background: rgba(255,255,255,0.5);
 }
 
 .wizard-emoji {
@@ -85,9 +82,9 @@ div.stButton > button:hover {
 }
 
 .menu-card {
-    background: rgba(255,255,255,0.1);
+    background: rgba(255,255,255,0.22);
     backdrop-filter: blur(10px);
-    border: 2px solid rgba(255,255,255,0.2);
+    border: 2px solid rgba(255,255,255,0.45);
     border-radius: 24px;
     padding: 1.5rem 1rem;
     text-align: center;
@@ -105,12 +102,6 @@ div.stButton > button:hover {
     font-size: 0.85rem;
     color: rgba(255,255,255,0.7);
     margin-top: 0.3rem;
-}
-
-/* Großer unsichtbarer Overlay-Button über der Karte */
-.card-btn-wrapper {
-    position: relative;
-    margin-bottom: 1rem;
 }
 </style>
 """, unsafe_allow_html=True)
