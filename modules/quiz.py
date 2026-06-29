@@ -8,14 +8,15 @@ ANIMALS = [
     {"name": "Pinguin",  "emoji": "🐧", "url": "https://images.unsplash.com/photo-1551986782-d0169b3f8fa7?w=400"},
     {"name": "Giraffe",  "emoji": "🦒", "url": "https://images.unsplash.com/photo-1547721064-da6cfb341d50?w=400"},
     {"name": "Zebra",    "emoji": "🦓", "url": "https://images.unsplash.com/photo-1529728329775-c90d27125b7b?w=400"},
-    {"name": "Gorilla",  "emoji": "🦍", "url": "https://images.unsplash.com/photo-1551382098-8e5f5b1b4a95?w=400"},
+    {"name": "Gorilla",  "emoji": "🦍", "url": "https://images.unsplash.com/photo-1520808663317-647b476a81b9?w=400"},
     {"name": "Flamingo", "emoji": "🦩", "url": "https://images.unsplash.com/photo-1497206365907-f5e630693df0?w=400"},
-    {"name": "Krokodil", "emoji": "🐊", "url": "https://images.unsplash.com/photo-1504450874802-0ba2bcd9b5ae?w=400"},
+    {"name": "Krokodil", "emoji": "🐊", "url": "https://images.unsplash.com/photo-1610058494255-9a773f4b1ac3?w=400"},
     {"name": "Nashorn",  "emoji": "🦏", "url": "https://images.unsplash.com/photo-1598439210625-5067c578f3f6?w=400"},
     {"name": "Koalabär", "emoji": "🐨", "url": "https://images.unsplash.com/photo-1459262838948-3e2de6c1ec80?w=400"},
     {"name": "Panda",    "emoji": "🐼", "url": "https://images.unsplash.com/photo-1564349683136-77e08dba1ef7?w=400"},
     {"name": "Kamel",    "emoji": "🐪", "url": "https://images.unsplash.com/photo-1518467166778-b88f373ffec7?w=400"},
 ]
+
 MAX_LIVES = 5
 
 def _init_quiz():
@@ -44,9 +45,37 @@ def show():
     .quiz-question { font-size:1.6rem; font-weight:700; color:#1E3A5F; text-align:center;
                      background:white; border-radius:16px; padding:1rem;
                      box-shadow:0 4px 12px rgba(0,0,0,0.07); margin-bottom:1rem; }
-    .feedback-ok  { font-size:2rem; text-align:center; color:#059669; font-weight:900; }
-    .feedback-bad { font-size:2rem; text-align:center; color:#DC2626; font-weight:900; }
+    .feedback-ok  { font-size:2rem; text-align:center; color:#059669; font-weight:900; margin-top:1rem; }
+    .feedback-bad { font-size:2rem; text-align:center; color:#DC2626; font-weight:900; margin-top:1rem; }
     .game-over    { font-size:2.5rem; text-align:center; font-weight:900; color:#1E3A5F; }
+
+    .img-btn {
+        background: none;
+        border: 6px solid transparent;
+        border-radius: 20px;
+        padding: 4px;
+        cursor: pointer;
+        width: 100%;
+        transition: transform 0.15s, border-color 0.15s;
+        display: block;
+    }
+    .img-btn:hover {
+        transform: scale(1.04);
+        border-color: #2563EB;
+    }
+    .img-btn img {
+        width: 100%;
+        border-radius: 14px;
+        display: block;
+        height: 180px;
+        object-fit: cover;
+    }
+    .img-correct { border:6px solid #34D399 !important; border-radius:20px; padding:4px; display:block; }
+    .img-correct img { width:100%; border-radius:14px; height:180px; object-fit:cover; display:block; }
+    .img-wrong   { border:6px solid #F87171 !important; border-radius:20px; padding:4px; display:block; opacity:0.6; }
+    .img-wrong img   { width:100%; border-radius:14px; height:180px; object-fit:cover; display:block; }
+    .img-neutral { border:6px solid transparent; border-radius:20px; padding:4px; display:block; }
+    .img-neutral img { width:100%; border-radius:14px; height:180px; object-fit:cover; display:block; }
     </style>
     """, unsafe_allow_html=True)
 
@@ -86,40 +115,58 @@ def show():
         play_text(f"Welches Bild zeigt den {correct['name']}?")
         st.session_state.quiz_question_read = True
 
+    # Inject JS to handle image clicks → sets a hidden query param
+    if not answered:
+        click_js = """
+        <script>
+        function chooseAnimal(name) {
+            window.parent.postMessage({type: 'streamlit:setComponentValue', value: name}, '*');
+        }
+        </script>
+        """
+        st.markdown(click_js, unsafe_allow_html=True)
+
     cols = st.columns(2)
     for i, animal in enumerate(options):
         with cols[i % 2]:
             if answered:
                 if animal["name"] == correct["name"]:
-                    border = "6px solid #34D399"
-                    opacity = "1"
+                    css = "img-correct"
                 elif animal["name"] == chosen:
-                    border = "6px solid #F87171"
-                    opacity = "0.5"
+                    css = "img-wrong"
                 else:
-                    border = "6px solid transparent"
-                    opacity = "1"
+                    css = "img-neutral"
                 st.markdown(f'''
-                    <img src="{animal["url"]}"
-                         style="width:100%;border-radius:16px;border:{border};opacity:{opacity};margin-bottom:0.3rem">
-                    <p style="text-align:center;font-size:1.1rem;font-weight:700">{animal["emoji"]} {animal["name"]}</p>
+                    <div class="{css}">
+                        <img src="{animal["url"]}">
+                    </div>
+                    <p style="text-align:center;font-size:1.2rem;font-weight:900;margin-top:6px">
+                        {animal["emoji"]} {animal["name"]}
+                    </p>
                 ''', unsafe_allow_html=True)
             else:
-                st.markdown(f'''
-                    <img src="{animal["url"]}"
-                         style="width:100%;border-radius:16px;margin-bottom:0.3rem"
-                         onerror="this.src='https://placehold.co/300x200?text={animal["name"]}'" >
-                ''', unsafe_allow_html=True)
-                if st.button(f"{animal['emoji']} Das ist es!", key=f"answer_{i}_{animal['name']}"):
+                # Großer klickbarer Button mit Bild
+                if st.button(
+                    f"{animal['emoji']} {animal['name']}",
+                    key=f"answer_{i}_{animal['name']}",
+                    use_container_width=True,
+                ):
                     st.session_state.quiz_answered = True
                     st.session_state.quiz_chosen   = animal["name"]
                     if animal["name"] == correct["name"]:
                         st.session_state.quiz_score += 1
-                        st.session_state.quiz_question_read = False
                     else:
                         st.session_state.quiz_lives -= 1
-                        st.session_state.quiz_question_read = False
+                    st.session_state.quiz_question_read = False
                     st.rerun()
+
+                st.markdown(f'''
+                    <img src="{animal["url"]}"
+                         style="width:100%; height:180px; object-fit:cover;
+                                border-radius:16px; margin-top:-0.5rem; margin-bottom:0.8rem;
+                                cursor:pointer; display:block;"
+                    >
+                ''', unsafe_allow_html=True)
 
     if answered:
         if chosen == correct["name"]:
@@ -129,7 +176,7 @@ def show():
             st.markdown(f'<div class="feedback-bad">❌ Das war der {correct["name"]}! {correct["emoji"]}</div>', unsafe_allow_html=True)
             play_text(f"Das war leider falsch. Das richtige Tier war der {correct['name']}!")
 
-        if st.button("➡️ Nächste Frage", key="next_q"):
+        if st.button("➡️ Nächste Frage", key="next_q", use_container_width=True):
             _init_quiz()
             st.session_state.quiz_question_read = False
             st.rerun()
