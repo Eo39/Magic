@@ -153,7 +153,7 @@ def show():
             st.markdown('<div class="feedback-ok">🎉 Super! Richtig! ⭐</div>', unsafe_allow_html=True)
             play_text(f"Super! Das war wirklich {correct['name']}! Du bekommst einen Stern!")
         else:
-            st.markdown(f'<div class="feedback-bad">❌ Das war der {correct["name"]}! {correct["emoji"]}</div>', unsafe_allow_html=True)
+            st.markdown(f'<div class="feedback-bad">❌ Das war {correct["name"]}! {correct["emoji"]}</div>', unsafe_allow_html=True)
             play_text(f"Das war leider falsch. Das richtige Tier war {correct['name']}!")
 
         if st.button("➡️ Nächste Frage", key="next_q", use_container_width=True):
