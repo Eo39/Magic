@@ -104,11 +104,11 @@ def show():
     answered = st.session_state.quiz_answered
     chosen   = st.session_state.quiz_chosen
 
-    question_text = f"Welches Bild zeigt den {correct['name']}? {correct['emoji']}"
+    question_text = f"Welches Bild zeigt {correct['name']}? {correct['emoji']}"
     st.markdown(f'<div class="quiz-question">{question_text}</div>', unsafe_allow_html=True)
 
     if not answered and not st.session_state.get("quiz_question_read"):
-        play_text(f"Welches Bild zeigt den {correct['name']}?")
+        play_text(f"Welches Bild zeigt {correct['name']}?")
         st.session_state.quiz_question_read = True
 
     cols = st.columns(2)
@@ -151,10 +151,10 @@ def show():
     if answered:
         if chosen == correct["name"]:
             st.markdown('<div class="feedback-ok">🎉 Super! Richtig! ⭐</div>', unsafe_allow_html=True)
-            play_text(f"Super! Das war wirklich der {correct['name']}! Du bekommst einen Stern!")
+            play_text(f"Super! Das war wirklich {correct['name']}! Du bekommst einen Stern!")
         else:
             st.markdown(f'<div class="feedback-bad">❌ Das war der {correct["name"]}! {correct["emoji"]}</div>', unsafe_allow_html=True)
-            play_text(f"Das war leider falsch. Das richtige Tier war der {correct['name']}!")
+            play_text(f"Das war leider falsch. Das richtige Tier war {correct['name']}!")
 
         if st.button("➡️ Nächste Frage", key="next_q", use_container_width=True):
             _init_quiz()
