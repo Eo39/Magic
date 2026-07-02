@@ -8,13 +8,13 @@ ANIMALS = [
     {"name": "Pinguin",  "emoji": "🐧", "url": "https://images.unsplash.com/photo-1551986782-d0169b3f8fa7?w=400"},
     {"name": "Giraffe",  "emoji": "🦒", "url": "https://images.unsplash.com/photo-1547721064-da6cfb341d50?w=400"},
     {"name": "Zebra",    "emoji": "🦓", "url": "https://images.unsplash.com/photo-1529728329775-c90d27125b7b?w=400"},
-    {"name": "Gorilla",  "emoji": "🦍", "url": "https://images.unsplash.com/photo-1520808663317-647b476a81b9?w=400"},
+    {"name": "Vogel",  "emoji": "🕊", "url": "https://images.unsplash.com/photo-1520808663317-647b476a81b9?w=400"},
     {"name": "Flamingo", "emoji": "🦩", "url": "https://images.unsplash.com/photo-1497206365907-f5e630693df0?w=400"},
     {"name": "Krokodil", "emoji": "🐊", "url": "https://images.unsplash.com/photo-1610058494255-9a773f4b1ac3?w=400"},
     {"name": "Nashorn",  "emoji": "🦏", "url": "https://images.unsplash.com/photo-1598439210625-5067c578f3f6?w=400"},
     {"name": "Koalabär", "emoji": "🐨", "url": "https://images.unsplash.com/photo-1459262838948-3e2de6c1ec80?w=400"},
     {"name": "Panda",    "emoji": "🐼", "url": "https://images.unsplash.com/photo-1564349683136-77e08dba1ef7?w=400"},
-    {"name": "Kamel",    "emoji": "🐪", "url": "https://images.unsplash.com/photo-1518467166778-b88f373ffec7?w=400"},
+    {"name": "Schildkröte",    "emoji": "🐢", "url": "https://images.unsplash.com/photo-1518467166778-b88f373ffec7?w=400"},
 ]
 
 MAX_LIVES = 5
